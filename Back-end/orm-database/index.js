@@ -1,4 +1,5 @@
 const mysql = require('mysql2');
+const { Sequelize, DataTypes } = require("sequelize");
 
 const connection = mysql.createConnection({
   host     : 'localhost',
