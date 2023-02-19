@@ -1,6 +1,9 @@
-const router = require('express').Router();
-const itemController = require("../controllers/controllers");
+const campersRouter = require('express').Router();
+const campersController = require("../controllers/campers.controller.js");
 
-router.get("/", itemController.selectAll);
+router.get("/campers", campersController.read);
+router.post("/campers", campersController.create);
+router.put("/campers/:id", campersController.update);
+router.delete("/campers/:id", campersController.deleete);
 
-module.exports = router;
+module.exports = campersRouter;
