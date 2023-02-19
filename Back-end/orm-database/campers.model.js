@@ -1,10 +1,6 @@
 
 module.exports = (sequelize, DataTypes) => {
     const Campers = sequelize.define("campers", {
-      id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
       firstname: {
         type: DataTypes.STRING,
         allowNull: false,

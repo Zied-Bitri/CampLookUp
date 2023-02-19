@@ -1,9 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
     const Sites = sequelize.define("sites", {
-      id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
       name: {
         type: DataTypes.STRING,
         allowNull: false,
