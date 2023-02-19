@@ -1,10 +1,10 @@
 const Booking = require('../orm-database/booking.model.js');
-const { Sequelize } = require("sequelize");
+//const { Sequelize } = require("sequelize");
 
 const read = async function (req, res) {
    try {
-     const bookings = await Booking.findAll();
-     res.status(200).send(bookings);
+     const ebookings = await Booking.findAll();
+     res.status(200).send(ebookings);
    } catch (error) {
      res.status(500).send(error);
    }
