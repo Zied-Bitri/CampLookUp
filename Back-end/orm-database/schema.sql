@@ -13,8 +13,13 @@ CREATE TABLE IF NOT EXISTS `camp`.`sites` (
   `name` VARCHAR(45) NOT NULL,
   `image` VARCHAR(45) NOT NULL,
   `location` VARCHAR(45) NOT NULL,
+
+  `availibity` TINYINT NOT NULL,
+  `main activity` VARCHAR(45) NOT NULL,
+
   `availabity` TINYINT NOT NULL,
   `main_activity` VARCHAR(45) NOT NULL,
+
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -37,7 +42,13 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `camp`.`booking` (
   `id` INT NOT NULL AUTO_INCREMENT,
+
   `check_in` DATE NOT NULL,
+
+
+  `check-in` INT NOT NULL,
+
+  `check_in` INT NOT NULL,
   `duration` INT NOT NULL,
   `campers_id` INT NOT NULL,
   `sites_id` INT NOT NULL,
@@ -55,5 +66,15 @@ CREATE TABLE IF NOT EXISTS `camp`.`booking` (
     ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
+
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 
