@@ -3,16 +3,17 @@ const express = require("express");
 const bookingRoutes = require('./routes/booking.js');
 const campersRoutes = require('./routes/campers.js');
 const sitesRoutes = require('./routes/sites.js');
- 
+const cors = require('cors');
+
+
 const db = require('./orm-database');
 
 const app = express();
 const PORT = process.env.PORT || 3000
 
-
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(__dirname + "/../client/dist"));
 
 app.use("/api/booking", bookingRoutes);
 app.use("/api/campers", campersRoutes);
@@ -64,5 +65,5 @@ app.get('/sites', async function (req, res) {
 
 
 app.listen(PORT, function () {
-  console.log("listening on port 3000!");
+  console.log(`Server listening on port ${PORT}`);
 });

@@ -1,27 +1,9 @@
-const mysql = require('mysql2');
-const { Sequelize, DataTypes } = require("sequelize");
-
-const sequelize = new Sequelize('camp', 'root', 'root',
-  {
-    host: "localhost",
-    dialect: "mysql",
-    logging: false
-  }
-);
-//const connection = mysql.createConnection({
- // host     : 'localhost',
-  //user     : 'root',
-  //password : 'root',
-  //database : 'camp'
-//});
-const db = {};
+const db = require('../../models');
 
 
-db.sequelize = sequelize;
-
-db.Booking = require("./booking.model")(sequelize, DataTypes);
-db.Campers = require("./campers.model")(sequelize, DataTypes);
-db.Sites = require("./sites.model")(sequelize, DataTypes);
+db.Booking = require("./booking.model");
+db.Campers = require("./campers.model");
+db.Sites = require("./sites.model");
 
 db.Campers.hasMany(db.Booking, {
   foreignKey: "id",
