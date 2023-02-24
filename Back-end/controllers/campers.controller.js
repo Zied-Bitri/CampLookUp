@@ -1,7 +1,7 @@
-const Campers = require('../orm-database/campers.model.js');
+const {Campers} = require('../orm-database');
 const { Sequelize } = require("sequelize");
 
-const read = async function (req, res) {
+const readCamper = async function (req, res) {
    try {
      const campers = await Campers.findAll();
      res.status(200).send(campers);
@@ -10,7 +10,7 @@ const read = async function (req, res) {
    }
  };
 
- const create = async function (req, res) {
+ const createCamper = async function (req, res) {
     try {
         const campers = await Campers.create(req.body);
         res.status(201).json(campers);
@@ -18,7 +18,7 @@ const read = async function (req, res) {
         res.status(500).send(error);
     }
  }
- const update = async function (req, res){
+ const updateCamper = async function (req, res){
   const camperId = req.params.id ;
   const {firstname,    lastname,    email,    telnumber}=req.body;
   try {
@@ -28,7 +28,7 @@ const read = async function (req, res) {
     res.send(error);
  }
  }
- const deleete = async function (req, res){
+ const deleteCamper = async function (req, res){
   const camperId = req.params.id;
   try {
     const camper = await Campers.destroy({where :{id: camperId}});
@@ -39,4 +39,4 @@ const read = async function (req, res) {
  }
  
 
-module.exports = { read, create, update, deleete};
+module.exports = { readCamper, createCamper, updateCamper, deleteCamper};

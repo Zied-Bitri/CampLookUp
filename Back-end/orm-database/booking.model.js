@@ -1,7 +1,13 @@
+const { timeStamp } = require("console");
 const { Sequelize, DataTypes } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
     const Booking = sequelize.define("booking", {
+      id:{
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+      },
       check_in: {
         type: DataTypes.DATE,
         allowNull: false,
@@ -10,6 +16,9 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
       }
+      
+    },
+    {timestamps:false
     });
   
     return Booking;
