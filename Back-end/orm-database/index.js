@@ -1,4 +1,4 @@
-const mysql = require('mysql2');
+//const mysql = require('mysql2');
 const { Sequelize, DataTypes } = require("sequelize");
 
 const sequelize = new Sequelize('camp', 'root', 'root',
@@ -18,6 +18,7 @@ const db = {};
 
 
 db.sequelize = sequelize;
+db.Sequelize = Sequelize;
 
 db.Booking = require("./booking.model")(sequelize, DataTypes);
 db.Campers = require("./campers.model")(sequelize, DataTypes);
