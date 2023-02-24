@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      availability: {
+      availabity: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
