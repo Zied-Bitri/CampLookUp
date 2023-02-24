@@ -1,5 +1,6 @@
 //const mysql = require('mysql2');
 const { Sequelize, DataTypes } = require("sequelize");
+
 const sequelize = new Sequelize('camp', 'root', 'root',
   {
     host: "localhost",
@@ -14,6 +15,7 @@ const sequelize = new Sequelize('camp', 'root', 'root',
   //database : 'camp'
 //});
 const db = {};
+
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
