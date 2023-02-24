@@ -1,7 +1,7 @@
-const Booking = require('../orm-database/booking.model.js');
-//const { Sequelize } = require("sequelize");
+const {Booking} = require('../orm-database');
+const { Sequelize } = require("sequelize");
 
-const read = async function (req, res) {
+const readBooking = async function (req, res) {
    try {
      const ebookings = await Booking.findAll();
      res.status(200).send(ebookings);
@@ -10,7 +10,7 @@ const read = async function (req, res) {
    }
  };
 
- const create = async function (req, res) {
+ const createBooking = async function (req, res) {
     try {
         const booking = await Booking.create(req.body);
         res.status(201).json(booking);
@@ -18,20 +18,20 @@ const read = async function (req, res) {
         res.status(500).send(error);
     }
  }
- const update = async function (req, res){
-  const bookingId = req.params.id ;
+ const updateBooking = async function (req, res){
+  const id = req.params.id ;
   const {check_in,    duration,    campers_id,    sites_id}=req.body;
   try {
-    let booking = await Booking.update({check_in,    duration,    campers_id,    sites_id}, {where : {id: bookingId}});
+    let booking = await Booking.update({check_in,    duration,    campers_id,    sites_id}, {where : {id: id}});
     res.status(200).json(booking);
   } catch (error) {
     res.send(error);
  }
  }
- const deleete = async function (req, res){
-  const bookingId = req.params.id;
+ const deleteBooking = async function (req, res){
+  const id = req.params.id;
   try {
-    const booking = await Booking.destroy({where :{id: bookingId}});
+    const booking = await Booking.destroy({where :{id: id}});
     res.status(200).json(booking);
     } catch (error) {
     res.status(404).send(error);
@@ -39,4 +39,4 @@ const read = async function (req, res) {
  }
  
 
-module.exports = { read, create, update, deleete};
+module.exports = { readBooking, createBooking, updateBooking, deleteBooking};
