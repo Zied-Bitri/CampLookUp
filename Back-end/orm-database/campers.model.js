@@ -1,6 +1,11 @@
 
 module.exports = (sequelize, DataTypes) => {
     const Campers = sequelize.define("campers", {
+      id:{
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+      },
       firstname: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -17,6 +22,8 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
       }
+    },
+    {timestamps:false
     });
   
     return Campers;

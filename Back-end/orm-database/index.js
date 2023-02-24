@@ -22,22 +22,18 @@ db.Booking = require("./booking.model")(sequelize, DataTypes);
 db.Campers = require("./campers.model")(sequelize, DataTypes);
 db.Sites = require("./sites.model")(sequelize, DataTypes);
 
-db.Campers.hasMany(db.Booking, {
-  foreignKey: "id",
-});
-db.Sites.hasMany(db.Booking, {
-  foreignKey: "id",
+db.Campers.hasMany(db.Booking,{
+  onDelete: "CASCADE",
+} );
+db.Sites.hasMany(db.Booking,{
+  onDelete: "CASCADE",
 });
 
 db.Booking.belongsTo(db.Campers, {
-  as: "camper",
-  foreignKey: "camperId",
   onDelete: "CASCADE",
 });
 
 db.Booking.belongsTo(db.Sites, {
-  as: "site",
-  foreignKey: "siteId",
   onDelete: "CASCADE",
 });
 
