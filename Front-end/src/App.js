@@ -1,23 +1,29 @@
-import logo from './logo.svg';
+import React, {useEffect, useState} from 'react';
 import './App.css';
+import SitesList from './components/SitesList.jsx'
+import axios from 'axios';
 
 function App() {
+
+  const [sites, setSites] = useState([])
+
+  useEffect(() => {
+    axios
+      .get('http://localhost:3000')
+      .then(response => {
+        console.log(response);
+        setSites(response.data);
+      })
+      .catch(err => {
+        console.log('error:', err);
+      });
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1> Welcome Campers </h1>
+      <SitesList sites={sites}/>
+
     </div>
   );
 }
