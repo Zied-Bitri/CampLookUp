@@ -1,4 +1,4 @@
-const Sites = require('../orm-database/sites.model.js');
+const {Sites} = require('../orm-database');
 const { Sequelize } = require("sequelize");
 //const bodyParser = require('body-parser')
 
