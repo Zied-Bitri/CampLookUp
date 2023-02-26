@@ -1,4 +1,4 @@
-const campersRouter = require('express').Router();
+const campersRouter = require("express").Router();
 const campersController = require("../controllers/campers.controller.js");
 
 campersRouter.get("/", campersController.readCamper);
