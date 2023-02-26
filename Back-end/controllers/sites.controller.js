@@ -1,10 +1,10 @@
-const {Sites} = require('../orm-database');
+const {Site} = require('../orm-database');
 const { Sequelize } = require("sequelize");
-//const bodyParser = require('body-parser')
+
 
 const readSite = async function (req, res) {
    try {
-     const sites = await Sites.findAll();
+     const sites = await Site.findAll();
      res.status(200).send(sites);
    } catch (error) {
      res.status(500).send(error);
@@ -13,8 +13,7 @@ const readSite = async function (req, res) {
 
  const createSite = async function (req, res) {
     try {
-        const site = await Sites.create(req.body);
-        //await site.save();
+        const site = await Site.create(req.body);
         res.status(201).json(site);
     } catch (error) {
         res.status(500).send(error);
@@ -24,7 +23,7 @@ const readSite = async function (req, res) {
   const id = req.params.id ;
   const {name,    image, location,  availabity,  main_activity}=req.body;
   try {
-    let site = await Sites.update({name,    image, location,  availabity,  main_activity}, {where : {id: id}});
+    let site = await Site.update({name,    image, location,  availabity,  main_activity}, {where : {id: id}});
     res.status(200).json(site);
   } catch (error) {
     res.send(error);
@@ -33,7 +32,7 @@ const readSite = async function (req, res) {
  const deleteSite = async function (req, res){
   const id = req.params.id;
   try {
-    const site = await Sites.destroy({where :{id: id}});
+    const site = await Site.destroy({where :{id: id}});
     res.status(200).json(site);
     } catch (error) {
     res.status(404).send(error);
