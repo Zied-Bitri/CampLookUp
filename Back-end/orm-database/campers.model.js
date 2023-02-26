@@ -1,6 +1,6 @@
 
 module.exports = (sequelize, DataTypes) => {
-    const Campers = sequelize.define("campers", {
+    const Campers = sequelize.define("camper", {
       id:{
         type: DataTypes.INTEGER,
         primaryKey: true,

@@ -1,6 +1,3 @@
-const { timeStamp } = require("console");
-const { Sequelize, DataTypes } = require("sequelize");
-
 module.exports = (sequelize, DataTypes) => {
     const Booking = sequelize.define("booking", {
       id:{

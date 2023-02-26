@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const Sites = sequelize.define("sites", {
+    const Sites = sequelize.define("site", {
       id:{
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -11,19 +11,19 @@ module.exports = (sequelize, DataTypes) => {
       },
       image: {
         type: DataTypes.STRING,
-        allowNull: false,
+        // allowNull: false,
       },
       location: {
         type: DataTypes.STRING,
-        allowNull: false,
+        // allowNull: false,
       },
-      availabity: {
+      availibity: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        // allowNull: true,
       },
       main_activity: {
         type: DataTypes.STRING,
-        allowNull: false,
+        // allowNull: true,
       }
     },
     {
