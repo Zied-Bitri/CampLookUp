@@ -1,5 +1,7 @@
+const { Sequelize, DataTypes } = require("sequelize");
+
 module.exports = (sequelize, DataTypes) => {
-    const Booking = sequelize.define("booking", {
+    const Booking = sequelize.define("Booking", {
       id:{
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -7,15 +9,15 @@ module.exports = (sequelize, DataTypes) => {
       },
       check_in: {
         type: DataTypes.DATE,
-        allowNull: false,
+        //allowNull: false,
       },
       duration: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        //allowNull: false,
       }
-      
     },
-    {timestamps:false
+    {
+        timestamps:false
     });
   
     return Booking;

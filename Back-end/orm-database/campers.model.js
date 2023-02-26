@@ -1,6 +1,7 @@
+const {Sequelize, DataTypes}=require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
-    const Campers = sequelize.define("camper", {
+    const Camper = sequelize.define("Camper", {
       id:{
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -12,11 +13,11 @@ module.exports = (sequelize, DataTypes) => {
       },
       lastname: {
         type: DataTypes.STRING,
-        allowNull: false,
+        //allowNull: false,
       },
       email: {
         type: DataTypes.STRING,
-        allowNull: false,
+        //allowNull: false,
       },
       telnumber: {
         type: DataTypes.INTEGER,
@@ -26,5 +27,5 @@ module.exports = (sequelize, DataTypes) => {
     {timestamps:false
     });
   
-    return Campers;
+    return Camper;
   };

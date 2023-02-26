@@ -1,7 +1,6 @@
 {
   "name": "back-end",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "mysql -u root -p <./orm-database/schema.sql",
@@ -10,6 +9,10 @@
   },
   "author": "",
   "license": "ISC",
+  "repository":"" ,
+  "bugs":"" ,
+  "homepage": "",
+  "description": "",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.2",
