@@ -1,9 +1,9 @@
-const sitesRouter = require('express').Router();
-const sitesController = require("../controllers/booking.controller.js");
+const sitesRouter = require("express").Router();
+const sitesController = require("../controllers/sites.controller.js");
 
-sitesRouter.get("/sites", sitesController.read);
-sitesRouter.post("/sites", sitesController.create);
-sitesRouter.put("/sites/:id", sitesController.update);
-sitesRouter.delete("/sites/:id",sitesController.deleete);
+sitesRouter.get("/", sitesController.readSite);
+sitesRouter.post("/", sitesController.createSite);
+sitesRouter.put("/:id", sitesController.updateSite);
+sitesRouter.delete("/:id", sitesController.deleteSite);
 
 module.exports = sitesRouter;
