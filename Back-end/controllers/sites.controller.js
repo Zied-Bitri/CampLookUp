@@ -21,7 +21,7 @@ const readSite = async function (req, res) {
  }
  const updateSite = async function (req, res){
   const id = req.params.id ;
-  const {name,    image, location,  availabity,  main_activity}=req.body;
+  const {name,    image, location,  availability,  main_activity}=req.body;
   try {
     let site = await Site.update({name,    image, location,  availabity,  main_activity}, {where : {id: id}});
     res.status(200).json(site);
