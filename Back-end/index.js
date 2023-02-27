@@ -4,7 +4,7 @@ const db = require('./orm-database');
 const bookingsRouter = require('./routes/bookings.js');
 const campersRouter = require('./routes/campers.js');
 const sitesRouter = require('./routes/sites.js');
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 const app = express();
 app.use(cors());

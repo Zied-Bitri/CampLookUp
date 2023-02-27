@@ -1,11 +1,13 @@
 import React from "react";
 import SiteDetails from "./SiteList";
+import SiteList from "./SiteList";
 
 const SitesList = (props) => {
+    console.log(props)
     return (
         <ul>
-            {props.sites.map(site => {
-            <li><SiteList key={site.id} site={site} /></li>})
+            {props.sites.map(site => (
+            <li key={site.id}><SiteList  site={site} /></li>))
             }
         </ul>
     )

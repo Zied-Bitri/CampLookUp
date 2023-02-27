@@ -15,7 +15,7 @@ const Header = () => {
                 <Tabs sx={{ml:'auto'}}
                 textColor='inherit' indicatorColor='secondary' value={value} onChange={(e,val)=> setvalue(val)}>
                     <Tab LinkComponent={NavLink} to= "/" label = "Home"/>
-                    <Tab LinkComponent={NavLink} to= "/addsite" label="Add Camp Site"/>
+                    <Tab LinkComponent={NavLink} to= "/addsite" label="Add Site"/>
                     <Tab LinkComponent={NavLink} to= "/booking" label="Booking"/>
                     <Tab LinkComponent={NavLink} to= "/aboutus" label="About Us"/>
                 </Tabs>
