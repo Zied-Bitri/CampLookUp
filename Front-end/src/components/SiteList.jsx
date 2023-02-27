@@ -1,6 +1,6 @@
 import React from "react";
 
-const SiteName = (props) => {
+const SiteList = (props) => {
     return (
         <div>
             <h3>Camping: {props.site.name} | Location: {props.site.location} | Main Activity: {props.site.main_activity}</h3>  
@@ -9,4 +9,4 @@ const SiteName = (props) => {
     )
 }
 
-export default SiteName;
+export default SiteList;
