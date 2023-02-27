@@ -3,8 +3,8 @@ const { Sequelize } = require("sequelize");
 
 const readBooking = async function (req, res) {
    try {
-     const ebookings = await Booking.findAll();
-     res.status(200).send(ebookings);
+     const bookings = await Booking.findAll();
+     res.status(200).send(bookings);
    } catch (error) {
      res.status(500).send(error);
    }
@@ -20,9 +20,9 @@ const readBooking = async function (req, res) {
  }
  const updateBooking = async function (req, res){
   const id = req.params.id ;
-  const {check_in,    duration,    campers_id,    sites_id}=req.body;
+  const {check_in,    duration,    CamperId,    SiteId}=req.body;
   try {
-    let booking = await Booking.update({check_in,    duration,    campers_id,    sites_id}, {where : {id: id}});
+    let booking = await Booking.update({check_in,    duration,    CamperId,    SiteId}, {where : {id: id}});
     res.status(200).json(booking);
   } catch (error) {
     res.send(error);

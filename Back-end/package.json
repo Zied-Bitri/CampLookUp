@@ -1,7 +1,6 @@
 {
   "name": "back-end",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
 
@@ -11,6 +10,15 @@
   },
   "author": "",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IngIlhem/CampLookUp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/IngIlhem/CampLookUp/issues"
+  },
+  "homepage": "https://github.com/IngIlhem/CampLookUp#readme",
+  "description": "",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.2",

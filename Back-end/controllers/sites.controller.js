@@ -1,6 +1,6 @@
 const {Site} = require('../orm-database');
 const { Sequelize } = require("sequelize");
-//const bodyParser = require('body-parser')
+
 
 const readSite = async function (req, res) {
    try {
@@ -14,7 +14,6 @@ const readSite = async function (req, res) {
  const createSite = async function (req, res) {
     try {
         const site = await Site.create(req.body);
-        //await site.save();
         res.status(201).json(site);
     } catch (error) {
         res.status(500).send(error);

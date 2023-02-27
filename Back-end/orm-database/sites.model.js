@@ -1,3 +1,5 @@
+const {Sequelize, DataTypes}=require("sequelize");
+
 module.exports = (sequelize, DataTypes) => {
     const Site = sequelize.define("site", {
       id:{
@@ -11,16 +13,16 @@ module.exports = (sequelize, DataTypes) => {
       },
       image: {
         type: DataTypes.STRING,
-       // allowNull: false,
+        //allowNull: false,
       },
       location: {
         type: DataTypes.STRING,
-       // allowNull: false,
+        //allowNull: false,
       },
-      availabity: {
+      availability: {
         type: DataTypes.BOOLEAN,
-        defaultValue:true,
-       // allowNull: false,
+        defaultValue: true,
+        //allowNull: false,
       },
       main_activity: {
         type: DataTypes.STRING,
