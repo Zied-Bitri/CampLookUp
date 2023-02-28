@@ -9,7 +9,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get('http://localhost:3000')
+      .get('http://localhost:3001')
       .then(response => {
         console.log(response);
         setSites(response.data);
