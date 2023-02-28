@@ -27,17 +27,18 @@ const readSite = async function (req, res) {
     res.status(200).json(site);
   } catch (error) {
     res.send(error);
- }
- }
- const deleteSite = async function (req, res){
+  }
+}
+
+const deleteSite = async function (req, res) {
   const id = req.params.id;
   try {
     const site = await Site.destroy({where :{id: id}});
     res.status(200).json(site);
-    } catch (error) {
+  } catch (error) {
     res.status(404).send(error);
- }
- }
+  }
+}
  
 
 module.exports = { readSite, createSite, updateSite, deleteSite};
