@@ -3,7 +3,7 @@ const cors = require("cors");
 const bookingsRouter = require('./routes/bookings.js');
 const campersRouter = require('./routes/campers.js');
 const sitesRouter = require('./routes/sites.js');
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 const app = express();
 
@@ -16,5 +16,5 @@ app.use("/campers", campersRouter);
 app.use("/sites", sitesRouter);
 
 app.listen(PORT, function () {
-  console.log(`Server listening on port : ${PORT}`);
+  console.log(`Server listening on port ${PORT}`);
 });
