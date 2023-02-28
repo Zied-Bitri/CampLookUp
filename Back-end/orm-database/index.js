@@ -1,4 +1,3 @@
-//const mysql = require('mysql2');
 const { Sequelize, DataTypes } = require("sequelize");
 
 const sequelize = new Sequelize('camp', 'root', 'root',
@@ -8,43 +7,49 @@ const sequelize = new Sequelize('camp', 'root', 'root',
     logging: false
   }
 );
-//const connection = mysql.createConnection({
- // host     : 'localhost',
-  //user     : 'root',
-  //password : 'root',
-  //database : 'camp'
-//});
+
 const db = {};
 
 
 db.sequelize = sequelize;
-db.Sequelize = Sequelize;
+//db.Sequelize = Sequelize;
 
-db.Booking = require("./booking.model")(sequelize, DataTypes);
-db.Campers = require("./campers.model")(sequelize, DataTypes);
-db.Sites = require("./sites.model")(sequelize, DataTypes);
+db.Booking = require("./bookings.model")(sequelize, DataTypes);
+db.Camper = require("./campers.model")(sequelize, DataTypes);
+db.Site = require("./sites.model")(sequelize, DataTypes);
 
-db.Campers.hasMany(db.Booking,{
-  onDelete: "CASCADE",
+db.Camper.hasMany(db.Booking,{
+  onDelete: "CASCADE"
 } );
-db.Sites.hasMany(db.Booking,{
-  onDelete: "CASCADE",
+db.Site.hasMany(db.Booking,{
+  onDelete: "CASCADE"
 });
 
-db.Booking.belongsTo(db.Campers, {
-  onDelete: "CASCADE",
+db.Booking.belongsTo(db.Camper, {
+  //onDelete: "CASCADE",
 });
 
-db.Booking.belongsTo(db.Sites, {
-  onDelete: "CASCADE",
+db.Booking.belongsTo(db.Site, {
+  //onDelete: "CASCADE",
 });
-
 
 db.sequelize
   .authenticate()
   .then(() => console.log("Connection has been established successfully."))
   .catch((err) => console.error("Unable to connect to the database:", err));
 
-module.exports = db;
+db.Site
+  .sync()
+  .then(()=>{console.log("Table sites and Model Site synchronised successfully.")})
+  .catch((err)=>{console.log("error syncing Table sites and Model Site: " + err)});
+db.Camper
+  .sync()
+  .then(()=>{console.log("Table campers and Model Camper synchronised successfully.")})
+  .catch((err)=>{console.log("error syncing Table campers and Model Camper: " + err)});
+db.Booking
+  .sync()
+  .then(()=>{console.log("Table bookings and Model Booking synchronised successfully.")})
+  .catch((err)=>{console.log("error syncing Table bookings and Model Booking: " + err)});
 
-//module.exports = connection;
+
+module.exports = db;

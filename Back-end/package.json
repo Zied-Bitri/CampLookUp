@@ -1,14 +1,25 @@
 {
   "name": "back-end",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"mysql -u root -p <./orm-database/schema.sql",
+    "server-dev": "nodemon ./index.js"
   },
   "author": "",
   "license": "ISC",
+  "repository": "",
+  "bugs": "",
+  "homepage": "",
+  "description": "",
   "dependencies": {
-    "express": "^4.18.2"
+    "cloudinary": "^1.34.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mysql2": "^3.1.2",
+    "nodemon": "^2.0.20",
+    "sequelize": "^6.29.0"
   }
 }
