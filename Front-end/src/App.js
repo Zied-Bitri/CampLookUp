@@ -11,25 +11,39 @@ import { useEffect, useState } from "react";
 
 
 function App() {
-  const [sites, setsites]=useState([]);
+  const [sites, setSites] = useState([]);
   
-  useEffect(()=>{
-          axios.get("http://localhost:5000/sites")
-               .then((res)=> {setsites(res.data);
-                console.log(res);})
-               .catch((err)=>console.log(err))}
-  ,[] )
-  const addSite = (site) => {
-    console.log(site);
+  useEffect(() => {
     axios
-    .post('/site', site)
-    .then(data => {
-      console.log(data)
-      setsites([...sites, data]);
-      //history('/');
-    })
-    .catch(err => console.log(err));
+      .get("http://localhost:5000/sites")
+      .then((res) => setSites(res.data))
+      .catch((err) => console.log(err))
+  }, [])
+
+  const addSite = (site) => {
+    //console.log(site);
+    axios
+      .post("http://localhost:5000", site)
+      .then(res => setSites([...sites, res.data]))
+      .catch(err => console.log(err));
   };
+
+  const uploadImage = (image) => {
+    
+  
+    const formData = new FormData();
+    formData.append("file", image);
+    formData.append("upload_presets", "uosh94ui");
+
+    axios
+    .post("https://api.cloudinary.com/v1_1/du8dllbos/image/upload", formData)
+    .then(response => console.log(response))
+    .catch(err => console.log(err));
+
+
+
+  }
+
   return (
     <React.Fragment>
       <header>
@@ -38,10 +52,10 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home/>} exact/>
-          <Route path="/sites" element={<SitesList sites={sites}/>} exact />
-          <Route path="/addsite" element={<AddSite/>} exact />
-          <Route path="/booking" element={<Booking/>} exact />
-          <Route path="/aboutus" element={<AboutUs/>} exact />
+          <Route path="/sites" element={<SitesList sites={sites} />} exact />
+          <Route path="/addsite" element={<AddSite addSite={addSite} uploadImage={uploadImage}/>} exact />
+          <Route path="/booking" element={<Booking />} exact />
+          <Route path="/aboutus" element={<AboutUs />} exact />
         </Routes>
       </main>
     </React.Fragment>

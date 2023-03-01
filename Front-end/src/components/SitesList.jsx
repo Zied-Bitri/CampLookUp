@@ -1,5 +1,4 @@
 import React from "react";
-import SiteDetails from "./SiteList";
 import SiteList from "./SiteList";
 
 const SitesList = (props) => {
