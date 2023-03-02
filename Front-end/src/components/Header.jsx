@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {AppBar, Tab, Tabs, Toolbar, Typography} from '@mui/material';
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import { NavLink } from 'react-router-dom';
+import App from '../App';
 
 const Header = () => {
   const [value, setvalue]=useState();
@@ -10,7 +11,7 @@ const Header = () => {
         <AppBar sx={{backgroundColor:'#232F3D'}} position='Sticky'>
             <Toolbar>
                 <Typography>
-                    <TravelExploreIcon/>
+                    <TravelExploreIcon />
                 </Typography>
                 <Tabs sx={{ml:'auto'}}
                 textColor='inherit' indicatorColor='secondary' value={value} onChange={(e,val)=> setvalue(val)}>
