@@ -21,28 +21,29 @@ function App() {
   }, [])
 
   const addSite = (site) => {
-    //console.log(site);
+    console.log(site);
     axios
-      .post("http://localhost:5000", site)
-      .then(res => setSites([...sites, res.data]))
+      .post("http://localhost:5000/sites", site)
+      .then(res => {
+        console.log("New Site added successfully")
+        setSites([...sites, res.data])})
       .catch(err => console.log(err));
   };
 
-  const uploadImage = (image) => {
-    
-  
-    const formData = new FormData();
-    formData.append("file", image);
-    formData.append("upload_presets", "uosh94ui");
-
+  const deleteSite = (id) => {
     axios
-    .post("https://api.cloudinary.com/v1_1/du8dllbos/image/upload", formData)
-    .then(response => console.log(response))
-    .catch(err => console.log(err));
-
-
-
+      .delete(`http://localhost:5000/sites/${id}`)
+      .then(res => {
+        console.log(`${res.data.name} deleted successfully`)
+        setSites(sites.filter((site) => {
+          return site.id !== id;
+        }))
+      })
+      .catch(err => console.log(err))
   }
+
+
+  
 
   return (
     <React.Fragment>
@@ -52,8 +53,8 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home/>} exact/>
-          <Route path="/sites" element={<SitesList sites={sites} />} exact />
-          <Route path="/addsite" element={<AddSite addSite={addSite} uploadImage={uploadImage}/>} exact />
+          <Route path="/sites" element={<SitesList sites={sites} deleteSite={deleteSite}/>} exact />
+          <Route path="/addsite" element={<AddSite addSite={addSite} />} exact />
           <Route path="/booking" element={<Booking />} exact />
           <Route path="/aboutus" element={<AboutUs />} exact />
         </Routes>

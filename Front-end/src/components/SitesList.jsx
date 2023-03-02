@@ -6,7 +6,7 @@ const SitesList = (props) => {
     return (
         <ul>
             {props.sites.map(site => (
-            <li key={site.id}><SiteList  site={site} /></li>))
+            <li key={site.id}><SiteList  site={site} deleteSite={props.deleteSite}/></li>))
             }
         </ul>
     )
