@@ -21,7 +21,7 @@ const SiteList = ({site, deleteSite, currentUser, setCurrentSite}) => {
             <div><p>      </p> </div>
             {(currentUser) && <button sx={{mt: "auto"}}>Update</button>}
             <div><p>      </p> </div>
-            {(currentUser) &&  <button sx={{mt: "auto"} onClick={() => {deleteSite(site.id)}}}>Delete</button>}
+            {(currentUser) &&  <button sx={{mt: "auto"}} onClick={() => {deleteSite(site.id)}}>Delete</button>}
 
         </div>
         </React.StrictMode>
