@@ -4,22 +4,21 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server-dev": "nodemon index.js"
+    "start": "mysql -u root -p <./orm-database/schema.sql",
+    "server-dev": "nodemon ./index.js"
   },
   "author": "",
   "license": "ISC",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/IngIlhem/CampLookUp.git"
-  },
-  "bugs": {
-    "url": "https://github.com/IngIlhem/CampLookUp/issues"
-  },
-  "homepage": "https://github.com/IngIlhem/CampLookUp#readme",
+  "repository": "",
+  "bugs": "",
+  "homepage": "",
   "description": "",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cloudinary": "^1.34.0",
     "cors": "^2.8.5",
     "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
     "mysql2": "^3.1.2",
     "nodemon": "^2.0.20",
     "sequelize": "^6.29.0"
