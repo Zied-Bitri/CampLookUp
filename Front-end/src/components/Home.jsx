@@ -1,21 +1,30 @@
-// import { color } from '@mui/system';
-// import React from 'react';
 
-// const Home = () => {
-//   return (
-//     <div>
-//       <h2 className='App'>Welcome Campers</h2>
-//       <h4>Choose your favorite <span>Camping Sites</span></h4>
-//     </div>
-//   );
-// }
+//import { color } from '@mui/system';
+import React, { useEffect } from "react";
+import UserService from "../services/user.service";
+import SitesList from "../components/SitesList.jsx";
+import AuthService from "../services/auth.service";
 
-// export default Home; 
-import React from 'react';
-//import './App.css';
+const Home = ({sites, setCurrentSite}) => {
+//setCurrentUser(undefined);
+AuthService.logout();
+ /* useEffect(() => {
+    UserService.getPublicContent().then(
+      (response) => {
+        setSites(response.data);
+      },
+      (error) => {
+        const _content =
+          (error.response && error.response.data) ||
+          error.message ||
+          error.toString();
 
-const Home = () => {
+        setSites(_content);
+      }
+    );
+  }, []);*/
   return (
+
     <div className="home">
       <header>
         <h1>Welcome Campers</h1>
@@ -33,6 +42,7 @@ const Home = () => {
         <button>Book Now</button>
       </section>
     </div>
+
   );
 }
 
