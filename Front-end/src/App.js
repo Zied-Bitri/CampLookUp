@@ -5,7 +5,7 @@ import SitesList from "./components/SitesList.jsx"
 import AddSite from "./components/AddSite.jsx";
 import Booking from "./components/Booking.jsx";
 import AboutUs from "./components/AboutUs.jsx";
-import { BrowserRouter, Route, Routes} from "react-router-dom";
+import { Route, Routes} from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -41,7 +41,6 @@ function App() {
       })
       .catch(err => console.log(err))
   }
-
 
   
 
