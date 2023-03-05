@@ -1,12 +1,31 @@
-import { color } from '@mui/system';
-import React from 'react';
+//import { color } from '@mui/system';
+import React, { useEffect } from "react";
+import UserService from "../services/user.service";
+import SitesList from "../components/SitesList.jsx";
+import AuthService from "../services/auth.service";
 
-const Home = () => {
+const Home = ({sites, setCurrentSite}) => {
+//setCurrentUser(undefined);
+AuthService.logout();
+ /* useEffect(() => {
+    UserService.getPublicContent().then(
+      (response) => {
+        setSites(response.data);
+      },
+      (error) => {
+        const _content =
+          (error.response && error.response.data) ||
+          error.message ||
+          error.toString();
+
+        setSites(_content);
+      }
+    );
+  }, []);*/
   return (
-    <div>
-      <h2 className='App'>Welcome Campers</h2>
-      <h4>Please choose your favorite camping site from <span>Camping Sites</span> menu</h4>
-    </div>
+    <React.StrictMode>
+      <SitesList setCurrentSite={setCurrentSite} sites={sites} />
+    </React.StrictMode>
   );
 }
 

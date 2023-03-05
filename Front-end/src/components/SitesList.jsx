@@ -1,12 +1,13 @@
 import React from "react";
 import SiteList from "./SiteList";
+import "./SitesList.css";
 
-const SitesList = (props) => {
-    console.log(props)
+const SitesList = ({currentUser, setCurrentSite, sites}) => {
+    console.log(sites)
     return (
         <ul>
-            {props.sites.map(site => (
-            <li key={site.id}><SiteList  site={site} /></li>))
+            {sites.map(site => (
+            <li key={site.id}><SiteList  currentUser={currentUser} setCurrentSite={setCurrentSite} site={site} /></li>))
             }
         </ul>
     )
