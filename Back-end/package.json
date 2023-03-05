@@ -10,16 +10,12 @@
   },
   "author": "",
   "license": "ISC",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/IngIlhem/CampLookUp.git"
-  },
-  "bugs": {
-    "url": "https://github.com/IngIlhem/CampLookUp/issues"
-  },
-  "homepage": "https://github.com/IngIlhem/CampLookUp#readme",
+  "repository": "",
+  "bugs": "",
+  "homepage": "",
   "description": "",
   "dependencies": {
+    "cloudinary": "^1.34.0",
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "mysql2": "^3.1.2",
