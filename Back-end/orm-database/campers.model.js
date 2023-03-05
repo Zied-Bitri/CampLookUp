@@ -17,11 +17,11 @@ module.exports = (sequelize, DataTypes) => {
       },
       email: {
         type: DataTypes.STRING,
-        //allowNull: false,
+        allowNull: false,
       },
       telnumber: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        //allowNull: false,
       }
     },
     {timestamps:false

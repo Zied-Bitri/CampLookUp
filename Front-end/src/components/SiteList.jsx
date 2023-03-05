@@ -1,21 +1,30 @@
 import React from "react";
-// Import the Cloudinary classes. 
-import {fill} from "@cloudinary/url-gen/actions/resize";
-import {CloudinaryImage} from '@cloudinary/url-gen';
+import { useNavigate } from 'react-router-dom';
 
 
-
-
-  
-const SiteList = ({site, deleteSite}) => {
-    const myImage = new CloudinaryImage('sample', {cloudName: 'du8dllbos'}).resize(fill().width(100).height(150));
-
+const SiteList = ({site, deleteSite, currentUser, setCurrentSite}) => {
+    
+    let navigate=useNavigate();
+    const booking = ()=>{
+        setCurrentSite(site);
+        console.log(site);
+        navigate("/Booking");
+        window.location.reload(); 
+    }
     return (
-        <div>
-            <h3>Camping: {site.name} | Location: {site.location} {'    '}<button>Booking</button>{'    '} <button onClick={() => {deleteSite(site.id)}}>Delete Site</button></h3>
-            {/* <AdvancedImage cldImg={myImage} /> */}
+        <React.StrictMode>
+        <div className='card'>
+            <h4>Camping Site: </h4>
+            <h4 onClick={()=>booking()}>{site.name} </h4>
+            <h4> Location: {site.location} </h4>
+            <img src={site.image} alt={site.name} onClick={()=>booking()}/>
+            <div><p>      </p> </div>
+            {(currentUser) && <button sx={{mt: "auto"}}>Update</button>}
+            <div><p>      </p> </div>
+            {(currentUser) &&  <button sx={{mt: "auto"}} onClick={() => {deleteSite(site.id)}}>Delete</button>}
+
         </div>
-        
+        </React.StrictMode>
     )
 }
 
