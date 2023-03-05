@@ -1,7 +1,8 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom';
 
-const SiteList = ({site, currentUser, setCurrentSite}) => {
+
+const SiteList = ({site, deleteSite, currentUser, setCurrentSite}) => {
     
     let navigate=useNavigate();
     const booking = ()=>{
@@ -20,7 +21,8 @@ const SiteList = ({site, currentUser, setCurrentSite}) => {
             <div><p>      </p> </div>
             {(currentUser) && <button sx={{mt: "auto"}}>Update</button>}
             <div><p>      </p> </div>
-            {(currentUser) &&  <button sx={{mt: "auto"}}>Delete</button>}
+            {(currentUser) &&  <button sx={{mt: "auto"} onClick={() => {deleteSite(site.id)}}}>Delete</button>}
+
         </div>
         </React.StrictMode>
     )

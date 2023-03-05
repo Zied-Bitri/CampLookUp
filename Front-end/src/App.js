@@ -49,12 +49,16 @@ function App() {
   };
 
   const addSite = (site) => {
-    //console.log(site);
+    console.log(site);
     axios
       .post("http://localhost:5000/sites", site)
-      .then(res => setSites([...sites, res.data]))
+      .then(res => {
+        console.log("New Site added successfully")
+        setSites([...sites, res.data])})
       .catch(err => console.log(err));
   };
+
+      
 
   const addBooking = (camper, currentSite)=>{
     axios
@@ -80,6 +84,24 @@ function App() {
     .catch(err => console.log(err));
   }
 
+      
+
+  const deleteSite = (id) => {
+    axios
+      .delete(`http://localhost:5000/sites/${id}`)
+      .then(res => {
+        console.log(`${res.data.name} deleted successfully`)
+        setSites(sites.filter((site) => {
+          return site.id !== id;
+        }))
+      })
+      .catch(err => console.log(err))
+  }
+
+
+  
+
+
   return (
     <React.Fragment>
       <header>
@@ -88,8 +110,9 @@ function App() {
       </header>
       <main>
         <Routes>
+
           <Route path="/" element={<Home setCurrentSite={setCurrentSite} sites={sites}/>} exact/>
-          <Route path="/sites" element={<SitesList currentUser={currentUser} setCurrentSite={setCurrentSite} sites={sites} />} exact />
+          <Route path="/sites" element={<SitesList deleteSite={deleteSite} currentUser={currentUser} setCurrentSite={setCurrentSite} sites={sites} />} exact />
           <Route path="/login" element={<Login/>} exact />
           <Route path="/register" element={<Register/>} exact />
           <Route path="/profile" element={<Profile/>} exact/>
@@ -98,6 +121,7 @@ function App() {
           <Route path="/addsite" element={<AddSite currentUser={currentUser} addSite={addSite} uploadImage={uploadImage}/>} exact />
           <Route path="/booking" element={<Booking addBooking={addBooking} currentSite={currentSite} currentUser={currentUser}/>} exact/>
           <Route path="/logout" element={<Home setCurrentSite={setCurrentSite} setCurrentUser={setCurrentUser} sites={sites}/>} exact/>
+
           <Route path="/aboutus" element={<AboutUs />} exact />
         </Routes>
       </main>
