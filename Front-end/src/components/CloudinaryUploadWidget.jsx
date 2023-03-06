@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+
 class CloudinaryUploadWidget extends Component {
   constructor(props) {
     super(props)
@@ -17,7 +18,7 @@ class CloudinaryUploadWidget extends Component {
     //   https://cloudinary.com/documentation/upload_widget_reference
 
 
-    var myWidget = cloudinary.createUploadWidget(
+    var myWidget = window.cloudinary.createUploadWidget(
       {
         cloudName: cloudName,
         uploadPreset: uploadPreset,
@@ -52,7 +53,7 @@ class CloudinaryUploadWidget extends Component {
   render() {
     return (
       <button id="upload_widget" className="cloudinary-button">
-        Upload
+        Upload Camp Image
       </button>
     );
   }

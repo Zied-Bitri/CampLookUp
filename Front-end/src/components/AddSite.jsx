@@ -9,15 +9,11 @@ const AddSite = ({ addSite }) => {
         }
 
     return (
-        <div>
+        <div className="AddSite">
             <h4>Enter Camping Site information :</h4>
-            <div>
+            <div className="form">
                 <input type="texte" name="name" placeholder="Name" onChange={e => setNewSite({ ...newSite, name: e.target.value })} />
-            </div>
-            <div>
                 <input type="texte" name="location" placeholder="Location" onChange={e => setNewSite({...newSite, location: e.target.value})} />
-            </div>
-            <div>
                 <input type="texte" name="main_activity" placeholder="main_activity" onChange={e => setNewSite({...newSite, main_activity: e.target.value})} />
             </div>
             <CloudinaryUploadWidget handleCloudinaryUrl={handleCloudinaryUrl} />
