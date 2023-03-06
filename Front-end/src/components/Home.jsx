@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 import UserService from "../services/user.service";
 import SitesList from "../components/SitesList.jsx";
 import AuthService from "../services/auth.service";
+import { NavLink } from 'react-router-dom';
 
 const Home = ({sites, setCurrentSite}) => {
 //setCurrentUser(undefined);
@@ -39,7 +40,7 @@ AuthService.logout();
       <section className="call-to-action">
         <h3>Ready to start camping?</h3>
         <p>Book your site today!</p>
-        <button>Book Now</button>
+        <button LinkComponent={NavLink} to="/sites">Book Now</button>
       </section>
     </div>
 
