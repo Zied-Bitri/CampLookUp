@@ -29,6 +29,14 @@ const Booking =({currentUser, currentSite, addBooking})=> {
             <TextField margin="normal" fullWidth variant="outlined" name="telnumber" placeholder="Tel Number" onChange={(e) => {
                 setNewCamper({...newCamper, telnumber: e.target.value})
             }}/>
+      <FormLabel>Check in</FormLabel>
+            <TextField margin="normal" fullWidth variant="outlined" name="check_in" placeholder="Check in" onChange={(e) => {
+                setNewCamper({...newBooking, check_in: e.target.value})
+            }}/>
+      <FormLabel>Duration</FormLabel>
+            <TextField margin="normal" fullWidth variant="outlined" name="duration" placeholder="Duration" onChange={(e) => {
+                setNewCamper({...newBooking, duration: e.target.value})
+            }}/>
       <Button type="submit" variant="contained" onClick={() => {addBooking(newCamper, newBooking)}}>Book a Journey</Button>
       </Box>
       
