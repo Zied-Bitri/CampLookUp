@@ -225,3 +225,10 @@ label {
 h4 {
   text-align: center;
 }
+
+.addSite {
+  width: 200px;
+  height: 50px;
+  margin: 10px;
+  align-items: center;
+}
