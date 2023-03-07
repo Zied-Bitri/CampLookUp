@@ -76,15 +76,16 @@ function App() {
     window.location.reload();
   }
 
-  const addBooking = (camper, currentSite) => {
+  const addBooking = (camper, currentSite, booking) => {
     let camperData = {}
     axios
       .post("http://localhost:5000/campers", camper)
       .then(res => {
         console.log("Camper added seccessfully" + res.data)
         camperData = res.data
+        booking={...booking, "camperId": camperData.id, "siteId":currentSite.id}
         axios
-          .post("http://localhost:5000/booking", camperData.id)
+          .post("http://localhost:5000/booking", booking)
           .then(res => console.log(res))
           .catch(err => console.log(err))
           })
