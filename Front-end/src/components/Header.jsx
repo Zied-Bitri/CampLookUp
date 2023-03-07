@@ -2,7 +2,6 @@ import React, {useState } from 'react';
 import {AppBar, Tab, Tabs, Toolbar, Typography} from '@mui/material';
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import { NavLink } from 'react-router-dom';
-import App from '../App';
 
 const Header = () => {
   const [value, setvalue]=useState();

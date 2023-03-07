@@ -6,13 +6,13 @@ import { Box, maxWidth } from "@mui/system";
 const Booking =({currentUser, currentSite, addBooking})=> {
   const [newBooking, setNewBooking] = useState({})
   const [newCamper, setNewCamper] = useState({});
-  useEffect(()=>{
-    console.log(currentSite)
-  }, [])
+  // useEffect(()=>{
+  //   console.log(currentSite)
+  // }, [])
   return (
     <form>
       <Box display="flex" flexDirection="column" justifyContent="center" maxWidth={700} alignContent={"center"} alignSelf="center" marginLeft="auto" marginRight="auto" marinTop={40}>
-      <h2>Booking A jurney in {currentSite.name}</h2>
+      <h2>Booking A journey in {currentSite.name}</h2>
       <FormLabel>Camper's First Name</FormLabel>
             <TextField margin="normal" fullWidth variant="outlined" name="firstname" placeholder="First Name" onChange={(e) => {
                 setNewCamper({...newCamper, firstname: e.target.value})
@@ -29,7 +29,15 @@ const Booking =({currentUser, currentSite, addBooking})=> {
             <TextField margin="normal" fullWidth variant="outlined" name="telnumber" placeholder="Tel Number" onChange={(e) => {
                 setNewCamper({...newCamper, telnumber: e.target.value})
             }}/>
-      <Button type="submit" variant="contained" onClick={() => {addBooking(newCamper, newBooking)}}>Book a Jeurney</Button>
+      <FormLabel>Check in</FormLabel>
+            <TextField margin="normal" fullWidth variant="outlined" name="check_in" placeholder="Check in" onChange={(e) => {
+                setNewCamper({...newBooking, check_in: e.target.value})
+            }}/>
+      <FormLabel>Duration</FormLabel>
+            <TextField margin="normal" fullWidth variant="outlined" name="duration" placeholder="Duration" onChange={(e) => {
+                setNewCamper({...newBooking, duration: e.target.value})
+            }}/>
+      <Button type="submit" variant="contained" onClick={() => {addBooking(newCamper, newBooking)}}>Book a Journey</Button>
       </Box>
       
     </form>

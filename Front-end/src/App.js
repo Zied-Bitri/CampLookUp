@@ -6,13 +6,13 @@ import SitesList from "./components/SitesList.jsx"
 import AddSite from "./components/AddSite.jsx";
 import Booking from "./components/Booking.jsx"
 import AboutUs from "./components/AboutUs.jsx";
-import {BrowserRouter, Route, Routes, Link} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
 import AuthService from "./services/auth.service";
-
+import { useNavigate } from 'react-router-dom';
 import Login from "./components/Login.jsx";
 import Register from "./components/Register.jsx";
 import Profile from "./components/Profile.jsx";
@@ -20,33 +20,22 @@ import BoardUser from "./components/BoardUser.jsx";
 import BoardAdmin from "./components/BoardAdmin.jsx";
 
 function App() {
+
   const [sites, setSites] = useState([]);
-  //const [showAdminBoard, setShowAdminBoard] = useState(false);
   const [currentUser, setCurrentUser] = useState(undefined);
   const [currentSite, setCurrentSite] =useState([]);
+  let navigate = useNavigate();
 
   useEffect(() => {
     const user = AuthService.getCurrentUser();
-
     if (user) {
       setCurrentUser(user);
-      //setShowAdminBoard(user.roles.includes("ROLE_ADMIN"));
     }
-  
     axios
       .get("http://localhost:5000/sites")
       .then((res) => setSites(res.data))
       .catch((err) => console.log(err))
   }, []);
-
-  const udCurrentSite = (site)=>
-  {
-    setCurrentSite(site);
-  };
-
-  const logOut = () => {
-    AuthService.logout();
-  };
 
   const addSite = (site) => {
     console.log(site);
@@ -58,33 +47,15 @@ function App() {
       .catch(err => console.log(err));
   };
 
-      
-
-  const addBooking = (camper, currentSite)=>{
-    axios
-      .post("http://localhost:5000/campers",camper)
-      .then(res => 
-        //axios
-        //.post("http://localhost:5000/booking")
-        console.log("Camper added seccessfully"+res))
-      .catch((err)=>
-         console.log(err));
-
-  };
-
   const uploadImage = (image) => {
-   
     const formData = new FormData();
     formData.append("file", image);
     formData.append("upload_presets", "uosh94ui");
-
     axios
-    .post("https://api.cloudinary.com/v1_1/du8dllbos/image/upload", formData)
-    .then(response => console.log(response))
-    .catch(err => console.log(err));
+      .post("https://api.cloudinary.com/v1_1/du8dllbos/image/upload", formData)
+      .then(response => console.log(response))
+      .catch(err => console.log(err));
   }
-
-      
 
   const deleteSite = (id) => {
     axios
@@ -98,9 +69,33 @@ function App() {
       .catch(err => console.log(err))
   }
 
+  const booking = (site) => {
+    setCurrentSite(site);
+    console.log(site);
+    navigate("/Booking");
+    window.location.reload();
+  }
 
-  
+  const addBooking = (camper, currentSite, booking) => {
+    let camperData = {}
+    axios
+      .post("http://localhost:5000/campers", camper)
+      .then(res => {
+        console.log("Camper added seccessfully" + res.data)
+        camperData = res.data
+        booking={...booking, "camperId": camperData.id, "siteId":currentSite.id}
+        axios
+          .post("http://localhost:5000/booking", booking)
+          .then(res => console.log(res))
+          .catch(err => console.log(err))
+          })
+      .catch((err) =>
+        console.log(err));
+};
 
+  const logOut = () => {
+    AuthService.logout();
+  };
 
   return (
     <React.Fragment>
@@ -110,9 +105,8 @@ function App() {
       </header>
       <main>
         <Routes>
-
           <Route path="/" element={<Home setCurrentSite={setCurrentSite} sites={sites}/>} exact/>
-          <Route path="/sites" element={<SitesList deleteSite={deleteSite} currentUser={currentUser} setCurrentSite={setCurrentSite} sites={sites} />} exact />
+          <Route path="/sites" element={<SitesList deleteSite={deleteSite} currentUser={currentUser} booking={booking} sites={sites} />} exact />
           <Route path="/login" element={<Login/>} exact />
           <Route path="/register" element={<Register/>} exact />
           <Route path="/profile" element={<Profile/>} exact/>
@@ -121,7 +115,6 @@ function App() {
           <Route path="/addsite" element={<AddSite currentUser={currentUser} addSite={addSite} uploadImage={uploadImage}/>} exact />
           <Route path="/booking" element={<Booking addBooking={addBooking} currentSite={currentSite} currentUser={currentUser}/>} exact/>
           <Route path="/logout" element={<Home setCurrentSite={setCurrentSite} setCurrentUser={setCurrentUser} sites={sites}/>} exact/>
-
           <Route path="/aboutus" element={<AboutUs />} exact />
         </Routes>
       </main>
