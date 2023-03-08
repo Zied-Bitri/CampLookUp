@@ -29,10 +29,12 @@ db.Site.hasMany(db.Booking,{
 });
 
 db.Booking.belongsTo(db.Camper, {
+  
   //onDelete: "CASCADE",
 });
 
 db.Booking.belongsTo(db.Site, {
+  
   //onDelete: "CASCADE",
 });
 
