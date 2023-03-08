@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import { Button, FormLabel, TextField } from "@mui/material";
 import { Box, maxWidth } from "@mui/system";
 
@@ -6,9 +6,7 @@ import { Box, maxWidth } from "@mui/system";
 const Booking =({currentUser, currentSite, addBooking})=> {
   const [newBooking, setNewBooking] = useState({})
   const [newCamper, setNewCamper] = useState({});
-  // useEffect(()=>{
-  //   console.log(currentSite)
-  // }, [])
+  
   return (
     <form>
       <Box display="flex" flexDirection="column" justifyContent="center" maxWidth={700} alignContent={"center"} alignSelf="center" marginLeft="auto" marginRight="auto" marinTop={40}>
@@ -31,11 +29,11 @@ const Booking =({currentUser, currentSite, addBooking})=> {
             }}/>
       <FormLabel>Check in</FormLabel>
             <TextField margin="normal" fullWidth variant="outlined" name="check_in" placeholder="Check in" onChange={(e) => {
-                setNewCamper({...newBooking, check_in: e.target.value})
+                setNewBooking({...newBooking, check_in: e.target.value})
             }}/>
       <FormLabel>Duration</FormLabel>
             <TextField margin="normal" fullWidth variant="outlined" name="duration" placeholder="Duration" onChange={(e) => {
-                setNewCamper({...newBooking, duration: e.target.value})
+                setNewBooking({...newBooking, duration: e.target.value})
             }}/>
       <Button type="submit" variant="contained" onClick={() => {addBooking(newCamper, newBooking)}}>Book a Journey</Button>
       </Box>

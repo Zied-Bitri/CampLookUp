@@ -23,7 +23,7 @@ function App() {
 
   const [sites, setSites] = useState([]);
   const [currentUser, setCurrentUser] = useState(undefined);
-  const [currentSite, setCurrentSite] =useState([]);
+  const [currentSite, setCurrentSite] =useState({});
   let navigate = useNavigate();
 
   useEffect(() => {
@@ -70,22 +70,22 @@ function App() {
   }
 
   const booking = (site) => {
-    setCurrentSite(site);
     console.log(site);
+    setCurrentSite(site);
+    console.log(currentSite);
     navigate("/Booking");
-    window.location.reload();
   }
 
-  const addBooking = (camper, currentSite, booking) => {
+  const addBooking = (camper, booking) => {
     let camperData = {}
     axios
       .post("http://localhost:5000/campers", camper)
       .then(res => {
         console.log("Camper added seccessfully" + res.data)
         camperData = res.data
-        booking={...booking, "camperId": camperData.id, "siteId":currentSite.id}
+        booking={...booking, "CamperId": camperData.id, "siteId":currentSite.id}
         axios
-          .post("http://localhost:5000/booking", booking)
+          .post("http://localhost:5000/bookings", booking)
           .then(res => console.log(res))
           .catch(err => console.log(err))
           })
